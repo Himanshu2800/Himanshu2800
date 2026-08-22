@@ -4,24 +4,17 @@ name: GitHub Metrics
 on:
   schedule:
     - cron: "0 0 * * *"
+
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
   metrics:
-
     runs-on: ubuntu-latest
 
     permissions:
       contents: write
 
     steps:
-
-      # ─────────────────────────────
-      # Main profile metrics
-      # ─────────────────────────────
 
       - name: 📊 GitHub Overview
         uses: lowlighter/metrics@latest
@@ -35,9 +28,8 @@ jobs:
 
           base: header, activity, community, repositories
 
-      # ─────────────────────────────
-      # Isometric contribution calendar
-      # ─────────────────────────────
+          output_action: none
+
 
       - name: 📅 Contribution Calendar
         uses: lowlighter/metrics@latest
@@ -54,9 +46,8 @@ jobs:
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
 
-      # ─────────────────────────────
-      # Languages
-      # ─────────────────────────────
+          output_action: none
+
 
       - name: 🈷️ Languages
         uses: lowlighter/metrics@latest
@@ -72,4 +63,20 @@ jobs:
 
           plugin_languages: yes
           plugin_languages_limit: 8
+
+          output_action: none
+
+
+      - name: 💾 Commit generated metrics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add github-metrics.svg
+          git add metrics-isocalendar.svg
+          git add metrics-languages.svg
+
+          git diff --cached --quiet || git commit -m "Update GitHub metrics"
+
+          git push
 ```
