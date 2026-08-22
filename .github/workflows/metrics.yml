@@ -1,4 +1,5 @@
-name: Metrics
+```yaml
+name: GitHub Metrics
 
 on:
   schedule:
@@ -9,15 +10,23 @@ on:
       - main
 
 jobs:
-  github-metrics:
+  metrics:
+
     runs-on: ubuntu-latest
 
     permissions:
       contents: write
 
     steps:
-      - uses: lowlighter/metrics@latest
+
+      # ─────────────────────────────
+      # Main profile metrics
+      # ─────────────────────────────
+
+      - name: 📊 GitHub Overview
+        uses: lowlighter/metrics@latest
         with:
+          filename: github-metrics.svg
           token: ${{ secrets.METRICS_TOKEN }}
 
           user: Himanshu2800
@@ -26,8 +35,41 @@ jobs:
 
           base: header, activity, community, repositories
 
+      # ─────────────────────────────
+      # Isometric contribution calendar
+      # ─────────────────────────────
+
+      - name: 📅 Contribution Calendar
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics-isocalendar.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+
+          user: Himanshu2800
+          template: classic
+          config_timezone: Asia/Kolkata
+
+          base: ""
+
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
 
+      # ─────────────────────────────
+      # Languages
+      # ─────────────────────────────
+
+      - name: 🈷️ Languages
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics-languages.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+
+          user: Himanshu2800
+          template: classic
+          config_timezone: Asia/Kolkata
+
+          base: ""
+
           plugin_languages: yes
           plugin_languages_limit: 8
+```
