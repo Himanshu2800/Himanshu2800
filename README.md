@@ -4,32 +4,41 @@
 
 ### Cybersecurity Engineer · Detection Engineering · Cloud Security
 
-**I build security systems that detect, investigate and explain threats.**
+**Building systems that detect, investigate & explain threats.**
 
 [![GitHub](https://img.shields.io/badge/GitHub-Himanshu2800-181717?style=flat-square\&logo=github)](https://github.com/Himanshu2800)
-[![Email](https://img.shields.io/badge/Email-jhahimanshu168%40gmail.com-D14836?style=flat-square\&logo=gmail\&logoColor=white)](mailto:jhahimanshu168@gmail.com)
+[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=flat-square\&logo=gmail\&logoColor=white)](mailto:jhahimanshu168@gmail.com)
 
 </div>
 
 ---
 
-## 🛡️ About Me
+## 🛡️ About
 
-I'm a cybersecurity engineer focused on **cloud security, detection engineering and SOC automation**.
+I build security tooling around **cloud security, detection engineering and SOC automation**.
 
-I enjoy building security tooling rather than just using it — from cloud-native SIEM pipelines and detection engines to security posture scanners and hands-on SOC environments.
+My focus is turning raw telemetry into something useful:
 
 ```text
-┌──────────────────────────────────────────────────────────────┐
-│                                                              │
-│  DETECT          INVESTIGATE          AUTOMATE               │
-│     │                  │                  │                  │
-│     └──────────────┬───┴──────────────────┘                  │
-│                    ▼                                         │
-│              ACTIONABLE SECURITY                             │
-│                 INTELLIGENCE                                 │
-│                                                              │
-└──────────────────────────────────────────────────────────────┘
+TELEMETRY
+    │
+    ▼
+NORMALIZATION
+    │
+    ▼
+DETECTION
+    │
+    ▼
+ENRICHMENT
+    │
+    ▼
+CORRELATION
+    │
+    ▼
+ALERT
+    │
+    ▼
+INVESTIGATION
 ```
 
 ---
@@ -38,79 +47,96 @@ I enjoy building security tooling rather than just using it — from cloud-nativ
 
 ### GCP Cloud SIEM
 
-A cloud-native SIEM designed around the complete detection lifecycle:
+A cloud-native SIEM built around an end-to-end detection pipeline.
 
 ```text
 GCP Activity
      │
-     ▼
-Cloud Audit Logs ──┐
-                   ├──► Cloud Logging
-VPC Flow Logs ─────┘
-                         │
-                         ▼
-                      Pub/Sub
-                         │
-                         ▼
-                    Cloud Run
-                         │
-                         ▼
-                 Detection Engine
-                         │
-              ┌──────────┼──────────┐
-              ▼          ▼          ▼
-           Sigma      Enrichment  Correlation
-              │          │          │
-              └──────────┼──────────┘
-                         ▼
-                     OpenSearch
-                         │
-                    ┌────┴────┐
-                    ▼         ▼
-                 Grafana    Slack
+     ├── Cloud Audit Logs
+     │
+     └── VPC Flow Logs
+             │
+             ▼
+       Cloud Logging
+             │
+             ▼
+          Pub/Sub
+             │
+             ▼
+         Cloud Run
+             │
+             ▼
+     Detection Engine
+        ┌────┼────┐
+        ▼    ▼    ▼
+      Sigma MITRE Enrichment
+        │    │    │
+        └────┼────┘
+             ▼
+         Correlation
+             │
+             ▼
+         OpenSearch
+        ┌────┴────┐
+        ▼         ▼
+     Grafana    Slack
 ```
 
-**Focus:** Sigma-compatible detection rules · MITRE ATT&CK · enrichment · correlation · alerting · OpenSearch · Grafana · Terraform
+**Detection:** Sigma-compatible rules · MITRE ATT&CK · condition evaluation · correlation
 
-[**→ View the GCP Cloud SIEM project**](https://github.com/Himanshu2800/GCP-Cloud-SIEM-Threat-Detection-Pipeline)
+**Infrastructure:** GCP · Cloud Run · Pub/Sub · OpenSearch · Grafana · Docker · Terraform
+
+[→ **View GCP Cloud SIEM**](https://github.com/Himanshu2800/GCP-Cloud-SIEM-Threat-Detection-Pipeline)
 
 ---
 
-## 🔐 Security Projects
+## 🔎 Security Projects
 
-| Project                 | Description                                       | Stack                             |
-| ----------------------- | ------------------------------------------------- | --------------------------------- |
-| ☁️ **GCP Cloud SIEM**   | Cloud-native threat detection pipeline            | GCP · Python · Sigma · OpenSearch |
-| 🔎 **GCP CSPM Scanner** | GCP misconfiguration & CIS benchmark scanner      | Python · GCP · IAM                |
-| 🧪 **Home SOC Lab**     | Detection, monitoring & investigation environment | Security Onion · pfSense · AD     |
+### ☁️ GCP Cloud SIEM
+
+Cloud-native security telemetry and detection pipeline.
+
+`GCP` `Python` `Sigma` `MITRE ATT&CK` `OpenSearch` `Grafana`
+
+[→ Repository](https://github.com/Himanshu2800/GCP-Cloud-SIEM-Threat-Detection-Pipeline)
+
+### 🔐 GCP CSPM Scanner
+
+Python-based Cloud Security Posture Management scanner that identifies GCP misconfigurations and maps findings to the CIS GCP Foundations Benchmark.
+
+`Python` `GCP` `IAM` `CIS Benchmark`
 
 ---
 
 ## 🧠 Security Stack
 
-### Cloud & Detection
+<div align="center">
 
-`GCP` `Cloud Run` `Pub/Sub` `Cloud Logging` `IAM` `VPC` `Sigma` `MITRE ATT&CK`
+### ☁️ CLOUD
 
-### SIEM & Monitoring
+`GCP` `Cloud Run` `Pub/Sub` `Cloud Logging` `IAM` `VPC`
 
-`OpenSearch` `Grafana` `Splunk` `Security Onion`
+### 🔎 DETECTION & SIEM
 
-### Network Security
+`Sigma` `MITRE ATT&CK` `OpenSearch` `Grafana` `Splunk`
 
-`Wireshark` `Zeek` `Suricata` `Snort` `Nmap` `tcpdump` `Netcat`
+### 🌐 NETWORK SECURITY
 
-### DFIR & Malware Analysis
+`Wireshark` `Zeek` `Suricata` `Snort` `Nmap` `tcpdump`
+
+### 🧪 DFIR & MALWARE
 
 `Volatility` `Velociraptor` `YARA` `Chainsaw` `IDA` `x64dbg`
 
-### Development & Infrastructure
+### ⚙️ ENGINEERING
 
 `Python` `Bash` `Docker` `Terraform` `Git`
 
+</div>
+
 ---
 
-## 📊 GitHub Metrics
+## 📊 GitHub
 
 <div align="center">
 
@@ -120,75 +146,74 @@ VPC Flow Logs ─────┘
 
 ---
 
-## 📅 Contribution Activity
+## 🧑‍💻 Languages
 
 <div align="center">
 
-<img src="./github-metrics.svg" width="100%">
+<img src="./metrics-languages.svg" width="90%">
 
 </div>
 
 ---
 
-## 🚀 What I'm Interested In
+## 📅 Contributions
+
+<div align="center">
+
+<img src="./metrics-isocalendar.svg" width="90%">
+
+</div>
+
+---
+
+## 🎯 Security Focus
 
 ```text
-Cloud Security
-      │
-      ├── GCP Security
-      ├── IAM
-      ├── Cloud Logging
-      └── CSPM
-             │
-             ▼
-      Detection Engineering
-             │
-      ┌──────┼──────┐
-      ▼      ▼      ▼
-    Sigma  MITRE   Correlation
-             │
-             ▼
-          SOC / SIEM
-             │
-      ┌──────┼──────┐
-      ▼      ▼      ▼
-    Alert  Hunt   Investigate
+                 CLOUD SECURITY
+                       │
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+         GCP           IAM         CSPM
+          │            │            │
+          └────────────┼────────────┘
+                       ▼
+              DETECTION ENGINEERING
+                       │
+             ┌─────────┼─────────┐
+             ▼         ▼         ▼
+           SIGMA     MITRE    CORRELATION
+             │         │         │
+             └─────────┼─────────┘
+                       ▼
+                    SOC / SIEM
+                       │
+             ┌─────────┼─────────┐
+             ▼         ▼         ▼
+           ALERT      HUNT    INVESTIGATE
 ```
 
 ---
 
-## 📈 Live GitHub Activity
-
-<div align="center">
-
-<img src="./github-metrics.svg" width="90%">
-
-</div>
-
----
-
-## 🧪 Currently Learning / Improving
+## 🧪 Currently Improving
 
 * Detection engineering
 * Cloud-native security architecture
-* Threat detection & correlation
 * GCP security
 * SIEM engineering
+* Threat detection & correlation
 * Security automation
 * Infrastructure as Code
 * SOC investigation workflows
 
 ---
 
-## 📫 Connect
-
 <div align="center">
 
-[![GitHub](https://img.shields.io/badge/GitHub-Himanshu2800-black?style=for-the-badge\&logo=github)](https://github.com/Himanshu2800)
-[![Email](https://img.shields.io/badge/Email-Contact-red?style=for-the-badge\&logo=gmail\&logoColor=white)](mailto:jhahimanshu168@gmail.com)
+### `BUILD • DETECT • INVESTIGATE • AUTOMATE`
 
 <br>
 
-### `BUILD • DETECT • INVESTIGATE • AUTOMATE`
+[![GitHub](https://img.shields.io/badge/GitHub-Himanshu2800-181717?style=for-the-badge\&logo=github)](https://github.com/Himanshu2800)
+[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge\&logo=gmail\&logoColor=white)](mailto:jhahimanshu168@gmail.com)
 
 </div>
