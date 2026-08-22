@@ -1,16 +1,33 @@
-## Hi there 👋
+name: Metrics
 
-<!--
-**Himanshu2800/Himanshu2800** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
-Here are some ideas to get you started:
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+    permissions:
+      contents: write
+
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+
+          user: Himanshu2800
+          template: classic
+          config_timezone: Asia/Kolkata
+
+          base: header, activity, community, repositories
+
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+
+          plugin_languages: yes
+          plugin_languages_limit: 8
