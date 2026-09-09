@@ -88,7 +88,4 @@ Security posture management tool for identifying GCP security misconfigurations 
 ---
 
 <div align="center">
-
-### `BUILD • DETECT • INVESTIGATE • AUTOMATE`
-
 </div>
