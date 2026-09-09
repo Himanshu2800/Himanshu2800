@@ -67,12 +67,23 @@ jobs:
 
           output_action: none
 
+      - name: 🔍 Check generated files
+        run: |
+          echo "Files in repo root:"
+          ls -la *.svg 2>/dev/null || echo "No SVG files found"
+
       - name: 💾 Commit generated metrics
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add github-metrics.svg metrics-isocalendar.svg metrics-languages.svg
+          for f in github-metrics.svg metrics-isocalendar.svg metrics-languages.svg; do
+            if [ -f "$f" ]; then
+              git add "$f"
+            else
+              echo "⚠️ Skipping missing file: $f"
+            fi
+          done
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
