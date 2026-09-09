@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 1
 
       - name: 📊 GitHub Overview
-        uses: lowlighter/metrics@v4
+        uses: lowlighter/metrics@latest
         with:
           filename: github-metrics.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -34,7 +34,7 @@ jobs:
           output_action: none
 
       - name: 📅 Contribution Calendar
-        uses: lowlighter/metrics@v4
+        uses: lowlighter/metrics@latest
         with:
           filename: metrics-isocalendar.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -51,7 +51,7 @@ jobs:
           output_action: none
 
       - name: 🈷️ Languages
-        uses: lowlighter/metrics@v4
+        uses: lowlighter/metrics@latest
         with:
           filename: metrics-languages.svg
           token: ${{ secrets.METRICS_TOKEN }}
