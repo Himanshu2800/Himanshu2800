@@ -6,38 +6,64 @@
 
 **Building systems that detect, investigate & explain threats.**
 
-[![GitHub](https://img.shields.io/badge/GitHub-Himanshu2800-181717?style=flat-square&logo=github)](https://github.com/Himanshu2800)
-[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:jhahimanshu168@gmail.com)
+<br>
+
+[![GitHub](https://img.shields.io/badge/GitHub-Himanshu2800-181717?style=for-the-badge&logo=github)](https://github.com/Himanshu2800)
+[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:jhahimanshu168@gmail.com)
 
 </div>
 
 ---
 
-## 🛡️ About
+<div align="center">
 
-I build security tooling around **cloud security, detection engineering and SOC automation**.
+## `DETECT • INVESTIGATE • AUTOMATE`
 
-My focus is turning raw telemetry into actionable security intelligence.
+</div>
+
+I build security tooling around **cloud security, detection engineering, SIEM architecture and SOC automation** — with a focus on turning raw telemetry into actionable security intelligence.
+
+---
+
+## ☁️ Currently Building
+
+### GCP Cloud SIEM
+
+A cloud-native SIEM and threat-detection pipeline built around the complete detection lifecycle.
 
 ```text
-                    SECURITY PIPELINE
-
-  TELEMETRY
+ GCP TELEMETRY
       │
-      ▼
-  NORMALIZATION
+      ├── Cloud Audit Logs
       │
-      ▼
-  DETECTION ────────► SIGMA / MITRE ATT&CK
-      │
-      ▼
-  ENRICHMENT
-      │
-      ▼
-  CORRELATION
-      │
-      ▼
-  ALERTING
-      │
-      ▼
-  INVESTIGATION
+      └── VPC Flow Logs
+              │
+              ▼
+       ┌──────────────┐
+       │Cloud Logging │
+       └──────┬───────┘
+              ▼
+       ┌──────────────┐
+       │    Pub/Sub   │
+       └──────┬───────┘
+              ▼
+       ┌──────────────┐
+       │   Cloud Run  │
+       │              │
+       │ Detection    │
+       │   Engine     │
+       └──────┬───────┘
+              │
+       ┌──────┼───────────┐
+       ▼      ▼           ▼
+     Sigma  Enrichment  Correlation
+       │      │           │
+       └──────┼───────────┘
+              ▼
+       ┌──────────────┐
+       │  OpenSearch  │
+       └──────┬───────┘
+              │
+         ┌────┴────┐
+         ▼         ▼
+      Grafana    Slack
