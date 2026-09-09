@@ -3,7 +3,6 @@ name: GitHub Metrics
 on:
   schedule:
     - cron: "0 0 * * *"
-
   workflow_dispatch:
 
 jobs:
@@ -18,10 +17,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: 📊 GitHub Overview
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@v4
         with:
           filename: github-metrics.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -35,7 +34,7 @@ jobs:
           output_action: none
 
       - name: 📅 Contribution Calendar
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@v4
         with:
           filename: metrics-isocalendar.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -52,7 +51,7 @@ jobs:
           output_action: none
 
       - name: 🈷️ Languages
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@v4
         with:
           filename: metrics-languages.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -73,9 +72,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add github-metrics.svg
-          git add metrics-isocalendar.svg
-          git add metrics-languages.svg
+          git add github-metrics.svg metrics-isocalendar.svg metrics-languages.svg
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
