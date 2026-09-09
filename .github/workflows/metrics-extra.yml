@@ -1,0 +1,45 @@
+name: GitHub Metrics - Extra
+
+on:
+  schedule:
+    - cron: "30 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+
+      - name: 📅 Contribution Calendar
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics-isocalendar.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+
+          user: Himanshu2800
+          template: classic
+          config_timezone: Asia/Kolkata
+
+          base: ""
+
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+
+      - name: 🈷️ Languages
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics-languages.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+
+          user: Himanshu2800
+          template: classic
+          config_timezone: Asia/Kolkata
+
+          base: ""
+
+          plugin_languages: yes
+          plugin_languages_limit: 8
