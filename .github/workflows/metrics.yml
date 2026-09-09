@@ -13,18 +13,7 @@ jobs:
       contents: write
 
     steps:
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      # ─────────────────────────────────────
-      # GitHub overview
-      # ─────────────────────────────────────
-
-      - name: 📊 GitHub Overview
-        uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@latest
         with:
           filename: github-metrics.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -34,85 +23,3 @@ jobs:
           config_timezone: Asia/Kolkata
 
           base: header, activity, community, repositories
-
-          output_action: none
-
-      # ─────────────────────────────────────
-      # Isometric contribution calendar
-      # ─────────────────────────────────────
-
-      - name: 📅 Contribution Calendar
-        uses: lowlighter/metrics@latest
-        with:
-          filename: metrics-isocalendar.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-
-          user: Himanshu2800
-          template: classic
-          config_timezone: Asia/Kolkata
-
-          base: ""
-
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: full-year
-
-          output_action: none
-
-      # ─────────────────────────────────────
-      # Most used languages
-      # ─────────────────────────────────────
-
-      - name: 🈷️ Languages
-        uses: lowlighter/metrics@latest
-        with:
-          filename: metrics-languages.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-
-          user: Himanshu2800
-          template: classic
-          config_timezone: Asia/Kolkata
-
-          base: ""
-
-          plugin_languages: yes
-          plugin_languages_limit: 8
-
-          output_action: none
-
-      # ─────────────────────────────────────
-      # Verify generated files
-      # ─────────────────────────────────────
-
-      - name: 🔍 Check generated files
-        run: |
-          echo "Generated SVG files:"
-          ls -lh *.svg 2>/dev/null || true
-
-          for f in github-metrics.svg metrics-isocalendar.svg metrics-languages.svg; do
-            if [ -f "$f" ]; then
-              echo "✅ $f"
-            else
-              echo "❌ $f is missing"
-              exit 1
-            fi
-          done
-
-      # ─────────────────────────────────────
-      # Commit everything once
-      # ─────────────────────────────────────
-
-      - name: 💾 Commit generated metrics
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add github-metrics.svg
-          git add metrics-isocalendar.svg
-          git add metrics-languages.svg
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update GitHub metrics"
-            git push origin HEAD:main
-          fi
