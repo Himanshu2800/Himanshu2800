@@ -34,12 +34,14 @@ Cloud-native SIEM and threat detection pipeline built for GCP.
 
 [View Project →](https://github.com/Himanshu2800/GCP-Cloud-SIEM-Threat-Detection-Pipeline)
 
-### 🔎 GCP CSPM Scanner
+### 🕵️ Pcap Threat Detection
 
-Security posture management tool for identifying GCP security misconfigurations and generating actionable findings.
+PCAP network forensics analyzer with explainable threat detection for C2 beaconing, DDoS, port scans, brute force, DNS tunneling, and data exfiltration.
 
 **Technologies:**  
-`Python` `GCP` `IAM` `CIS`
+`Python` `pcap` `cybersecurity` `intrusion-detection` `digital-forensics` `network-security` `security-tools`
+
+[View Project →](https://github.com/Himanshu2800/Pcap_Threat_Detection)
 
 ---
 
